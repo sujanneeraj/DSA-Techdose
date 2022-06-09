@@ -3,12 +3,23 @@ public:
     int singleNumber(vector<int>& nums) {
         
       //  return Soln1(nums);
-        return Soln2(nums);
+       // return Soln2(nums);
+        return Soln3(nums);
         
     }
     
     
 private:
+    
+    int Soln3(vector<int> &nums) {
+        int ones = 0;
+        int twos = 0;
+        for(int i = 0; i < nums.size(); i++) {
+            ones = (ones ^ nums[i]) & (~twos);
+            twos = (twos ^ nums[i]) & (~ones);
+        }
+        return ones;
+    }
     
     int Soln2(vector<int> &nums) {
         sort(nums.begin(), nums.end());
